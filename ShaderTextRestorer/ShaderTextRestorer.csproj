@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<DisableImplicitNamespaceImports>true</DisableImplicitNamespaceImports>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<AssemblyName>ShaderTextRestorer</AssemblyName>
+		<RootNamespace>ShaderTextRestorer</RootNamespace>
+		<CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+		<OutputPath>..\Bins\ShaderTextRestorer\$(Configuration)\</OutputPath>
+		<Configurations>Debug;Release</Configurations>
+		<DebugType>embedded</DebugType>
+		<DebugSymbols>true</DebugSymbols>
+		<Platforms>x64</Platforms>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)'=='Debug'">
+		<DefineConstants>DEBUG;TRACE</DefineConstants>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)'=='Release'">
+		<DefineConstants>TRACE</DefineConstants>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<RuntimeHostConfigurationOption Include="System.Globalization.Invariant" Value="true" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Smolv\Smolv.csproj" />
+		<ProjectReference Include="..\SpirV\SpirV.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Reference Include="..\Libraries\AssetRipperCommon.dll" />
+		<Reference Include="..\Libraries\AssetRipperCore.dll" />
+		<Reference Include="..\Libraries\AssetRipperLibrary.dll" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Remove="obj\**" />
+		<EmbeddedResource Remove="obj\**" />
+		<None Remove="obj\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="DXDecompiler-ly" Version="0.0.1" />
+	</ItemGroup>
+
+</Project>
